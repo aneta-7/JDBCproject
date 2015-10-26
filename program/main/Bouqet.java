@@ -4,6 +4,9 @@ public class Bouqet {
 	private long idBouqet;
 	private String bouqetName;
 	
+	private String probaZmiennej;
+	
+	
 	public long getIdBouqet() {
 		return idBouqet;
 	}
