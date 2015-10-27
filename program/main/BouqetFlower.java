@@ -4,6 +4,15 @@ public class BouqetFlower {
 	private long flowerIdFlower;
 	private long bouqetIdBouqet;
 	
+	public BouqetFlower(){
+		
+	}
+	
+	public BouqetFlower(long flowerIdFlower, long bouqetIdBouqet) {
+		super();
+		this.flowerIdFlower = flowerIdFlower;
+		this.bouqetIdBouqet = bouqetIdBouqet;
+	}
 	public long getFlowerIdFlower() {
 		return flowerIdFlower;
 	}

@@ -12,7 +12,7 @@ import java.util.List;
 public class BouqetFlowerManager {
 
 		
-		private Connection connection;
+		private static Connection connection;
 		
 		private String url = "jdbc:hsqldb:hsql://localhost/workdb";
 		
@@ -20,10 +20,10 @@ public class BouqetFlowerManager {
 
 
 		
-		private PreparedStatement addFlowerBouqetStmt;
-		private PreparedStatement deleteAllFlowerBouqetStmt;
-		private PreparedStatement getAllFlowerBouqetStmt;
-		private PreparedStatement updateFlowerBouqetStmt;
+		private static PreparedStatement addFlowerBouqetStmt;
+		private static PreparedStatement deleteAllFlowerBouqetStmt;
+		private static PreparedStatement getAllFlowerBouqetStmt;
+		private static PreparedStatement updateFlowerBouqetStmt;
 		
 		private Statement statement;
 		public BouqetFlowerManager(){
@@ -55,10 +55,10 @@ public class BouqetFlowerManager {
 				e.printStackTrace();
 			}
 		}
-			Connection getConnection(){
+			public static Connection getConnection(){
 				return connection;
 			}
-			void clearBouqetFlower(){
+			public static void clearBouqetFlower(){
 				try{
 					deleteAllFlowerBouqetStmt.executeUpdate();
 			}catch(SQLException e){
@@ -66,7 +66,7 @@ public class BouqetFlowerManager {
 			}
 			}
 			
-			public int addFlowerBouqet(BouqetFlower bf){
+			public static int addFlowerBouqet(BouqetFlower bf){
 				int count = 0;
 				try{
 					addFlowerBouqetStmt.setLong(1, bf.getFlowerIdFlower());
@@ -79,7 +79,7 @@ public class BouqetFlowerManager {
 				return count;
 			}
 		
-			public List<BouqetFlower> getAllFlowerBouqet(){
+			public static List<BouqetFlower> getAllFlowerBouqet(){
 				List<BouqetFlower> bouqetFlower = new ArrayList<BouqetFlower>();
 				
 				try{
