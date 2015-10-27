@@ -3,7 +3,7 @@ package main;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.concurrent.ArrayBlockingQueue;
-import java.awt.List;
+import java.util.List;
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
@@ -23,7 +23,7 @@ public class BouqetManager {
 	private PreparedStatement updateBouqetStmt;
 	
 	private Statement statement;
-	private BouqetManager(){
+	public BouqetManager(){
 		try{
 			connection = DriverManager.getConnection(url);
 			statement = connection.createStatement();			
@@ -53,11 +53,11 @@ public class BouqetManager {
 			e.printStackTrace();
 		}
 	}
-	Connection getConnection(){
+	public Connection getConnection(){
 		return connection;
 	}
 	
-	void clearBouqet(){
+	public void clearBouqet(){
 		try{
 			deleteAllBouqetStmt.executeUpdate();
 		}catch(SQLException e){

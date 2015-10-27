@@ -54,10 +54,10 @@ public class FlowerManager {
 			e.printStackTrace();
 		}
 	}
-		Connection getConnection(){
+		public Connection getConnection(){
 			return connection;
 		}
-		void clearFlower(){
+		public void clearFlower(){
 			try{
 				deleteAllFlowerStmt.executeUpdate();
 		}catch(SQLException e){

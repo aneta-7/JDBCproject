@@ -6,7 +6,12 @@ public class Bouqet {
 	
 	private String probaZmiennej;
 	
-	
+	public Bouqet()	{
+		
+	}
+	public Bouqet(String bouqetName) {
+		
+	}
 	public long getIdBouqet() {
 		return idBouqet;
 	}

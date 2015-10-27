@@ -2,13 +2,47 @@ package test;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Test;
+
+import main.Flower;
+import main.FlowerManager;
 
 public class FlowerTest {
 
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
+	
 
+FlowerManager flowerManager = new FlowerManager();
+	
+	private final static String NAME_1 = "roza";
+	private final static String PRICE_1 = "4";
+	
+	@Test
+	public void checkConnection(){
+		assertNotNull(flowerManager.getConnection());
+	}
+	
+	@Test
+	public void checkAdding(){
+		
+		Flower flower = new Flower(NAME_1, PRICE_1);
+		
+		flowerManager.clearFlower();
+		assertEquals(1,flowerManager.addFlower(flower));
+		
+		List<Flower> flowers = flowerManager.getAllFlower();
+		Flower personRetrieved = flowers.get(0);
+		
+		assertEquals(NAME_1, personRetrieved.getFlowerName());
+		assertEquals(PRICE_1, personRetrieved.getFlowerPrice());
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 }

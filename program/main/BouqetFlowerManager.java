@@ -79,8 +79,8 @@ public class BouqetFlowerManager {
 				return count;
 			}
 		
-			public List<Flower> getAllFlowerBouqet(){
-				List<Flower> bouqetFlower = new ArrayList<Flower>();
+			public List<BouqetFlower> getAllFlowerBouqet(){
+				List<BouqetFlower> bouqetFlower = new ArrayList<BouqetFlower>();
 				
 				try{
 					ResultSet rs = getAllFlowerBouqetStmt.executeQuery();

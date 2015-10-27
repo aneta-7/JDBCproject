@@ -7,7 +7,16 @@ public class Flower {
 	
 	private long flowerIdFlower;
 	private long bouqetIdBouqet;
+	public Flower(){
+		
+	}
 	
+	public Flower(String flowerName, String flowerPrice) {
+		super();
+		this.flowerName = flowerName;
+		this.flowerPrice = flowerPrice;
+		
+	}
 	public long getIdFlower() {
 		return idFlower;
 	}
