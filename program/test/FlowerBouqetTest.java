@@ -23,7 +23,7 @@ public class FlowerBouqetTest {
 		
 		BouqetFlower bf = new BouqetFlower(NAME_1, PRICE_1);
 		
-		BouqetFlowerManager.clearBouqetFlower();
+		//BouqetFlowerManager.clearBouqetFlower();
 		assertEquals(1,BouqetFlowerManager.addFlowerBouqet(bf));
 		
 		List<BouqetFlower> bfs = BouqetFlowerManager.getAllFlowerBouqet();
