@@ -14,7 +14,7 @@ public class BouqetFlowerManager {
 		
 		private Connection connection;
 		
-		private String url = "jdbc:hsqldb:hsql://localhost/workdb";
+		private String url = "jdbc:hsqldb:hsql://localhost/abc";
 		
 		private String createTableBouqetFlower = "CREATE TABLE BouqetFlower(flowerIdFlower bigint, bouqetIdBouqet bigint)";
 
@@ -52,7 +52,7 @@ public class BouqetFlowerManager {
 						addFlowerBouqetStmt =  connection.prepareStatement("INSERT INTO BouqetFlower(flowerIdFlower, bouqetIdBouqet)VALUES(?,?)");
 						deleteAllFlowerBouqetStmt = connection.prepareStatement("DELETE FROM BouqetFlower");
 						getAllFlowerBouqetStmt = connection.prepareStatement("SELECT flowerIdFlower, bouqetIdBouqet FROM BouqetFlower");
-					//	updateFlowerBouqetStmt = connection.prepareStatement("UPDATE BouqetFlower SET ");
+					//	updateFlowerBouqetStmt = connection.prepareStatement("UPDATE BouqetFlower SET  ");
 			
 			}
 			catch(SQLException e){
