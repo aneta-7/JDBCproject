@@ -22,6 +22,7 @@ public class FlowerManager {
 	
 	private PreparedStatement addFlowerStmt;
 	private PreparedStatement deleteAllFlowerStmt;
+	private PreparedStatement deleteFlowerStmt;
 	private PreparedStatement getAllFlowerStmt;
 	private PreparedStatement updateFlowerStmt;
 	
@@ -50,8 +51,9 @@ public class FlowerManager {
 					
 					addFlowerStmt =  connection.prepareStatement("INSERT INTO Flower(flowerName, flowerPrice)VALUES(?,?)");
 					deleteAllFlowerStmt = connection.prepareStatement("DELETE FROM Flower");
+					deleteFlowerStmt = connection.prepareStatement("DELETE FROM Flower WHERE idFlower =? ");
 					getAllFlowerStmt = connection.prepareStatement("SELECT idFlower, flowerName, flowerPrice FROM Flower");
-				//updateFlowerStmt = connection.prepareStatement("UPDATE");
+				    updateFlowerStmt = connection.prepareStatement("UPDATE Flower SET flowerName = ? WHERE idFlower = ?");
 		
 		}
 		catch(SQLException e){
@@ -70,6 +72,26 @@ public class FlowerManager {
 			e.printStackTrace();
 		}
 		}
+		
+		public void deleteFlower(Flower flower){
+			
+			try{
+				deleteFlowerStmt.setInt(1,(int) flower.getIdFlower());				
+			}
+			catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		
+		public void updateFlower(Flower flower){
+			try{
+				updateFlowerStmt.setString(1, flower.getFlowerName());
+				updateFlowerStmt.setLong(2, flower.getIdFlower());
+			}catch(SQLException e){
+				e.printStackTrace();
+			}
+		}
+		
 		
 		public int addFlower(Flower flower){
 			int count = 0;

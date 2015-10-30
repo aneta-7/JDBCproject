@@ -17,6 +17,11 @@ public class Flower {
 		this.flowerPrice = flowerPrice;
 		
 	}
+	public Flower(String flowerName,long idFlower) {
+		this.flowerName = flowerName;
+		this.idFlower = idFlower;
+	}
+
 	public long getIdFlower() {
 		return idFlower;
 	}

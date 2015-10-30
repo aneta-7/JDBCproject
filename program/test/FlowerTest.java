@@ -14,6 +14,7 @@ public class FlowerTest {
 
 FlowerManager flowerManager = new FlowerManager();
 	
+	private final static long ID_1 = 1;
 	private final static String NAME_1 = "roza";
 	private final static String PRICE_1 = "4";
 	
@@ -35,6 +36,29 @@ FlowerManager flowerManager = new FlowerManager();
 		
 		assertEquals(NAME_1, flowerRetrieved.getFlowerName());
 		assertEquals(PRICE_1, flowerRetrieved.getFlowerPrice());
+		
+	}
+	
+	@Test
+	public void checkUpdate(){
+		Flower flower = new Flower(NAME_1, ID_1);	
+		
+		List<Flower> flowers = flowerManager.getAllFlower();
+		Flower flowerRetrieved = flowers.get(0);
+		
+	//	assertEquals(1,flowerManager.updateFlower(flower));
+		
+	}
+	
+	
+
+	@Test
+	public void checkDelete(){
+		
+	}
+	
+	@Test
+	public void checkSelect(){
 		
 	}
 	

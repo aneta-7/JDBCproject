@@ -37,5 +37,17 @@ BouqetManager bouqetManager = new BouqetManager();
 		
 	}
 	
+	@Test
+	public void checkUpdate(){
+		
+	}
+	@Test
+	public void checkDelete(){
+		
+	}
 
+	@Test 
+	public void checkSelect(){
+		
+	}
 }

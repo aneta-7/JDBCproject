@@ -20,18 +20,22 @@ public class BouqetFlowerManager {
 
 
 		
-		private static PreparedStatement addFlowerBouqetStmt;
-		private static PreparedStatement deleteAllFlowerBouqetStmt;
-		private static PreparedStatement getAllFlowerBouqetStmt;
-		private static PreparedStatement updateFlowerBouqetStmt;
+		private PreparedStatement addFlowerBouqetStmt;
+		private PreparedStatement deleteAllFlowerBouqetStmt;
+		private PreparedStatement getAllFlowerBouqetStmt;
+		private PreparedStatement updateFlowerBouqetStmt;
 		
 		private Statement statement;
 		public BouqetFlowerManager(){
 			try{
-				connection = DriverManager.getConnection(url);
-				statement = connection.createStatement();
-				
-				ResultSet rs = connection.getMetaData().getTables(null, null, null, null);
+					
+					Class.forName("org.hsqldb.jdbcDriver");
+					
+					connection = DriverManager.getConnection(url);
+					statement = connection.createStatement();
+					
+					ResultSet rs = connection.getMetaData().getTables(null,null,null, null);
+					
 				
 				boolean tableExists = false;
 						while (rs.next()){
@@ -45,20 +49,23 @@ public class BouqetFlowerManager {
 						if(!tableExists)
 							statement.executeUpdate(createTableBouqetFlower);
 						
-						addFlowerBouqetStmt =  connection.prepareStatement("INSERT INTO BouqetFlower(flowerIdFlower,bouqetIdBouqet)VALUES(?,?)");
+						addFlowerBouqetStmt =  connection.prepareStatement("INSERT INTO BouqetFlower(flowerIdFlower, bouqetIdBouqet)VALUES(?,?)");
 						deleteAllFlowerBouqetStmt = connection.prepareStatement("DELETE FROM BouqetFlower");
 						getAllFlowerBouqetStmt = connection.prepareStatement("SELECT flowerIdFlower, bouqetIdBouqet FROM BouqetFlower");
-					//	updateFlowerBouqetStmt = connection.prepareStatement("UPDATE");
+					//	updateFlowerBouqetStmt = connection.prepareStatement("UPDATE BouqetFlower SET ");
 			
 			}
 			catch(SQLException e){
+				e.printStackTrace();
+			}
+			catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			}
 		}
 			public  Connection getConnection(){
 				return connection;
 			}
-			public static void clearBouqetFlower(){
+			public  void clearBouqetFlower(){
 				try{
 					deleteAllFlowerBouqetStmt.executeUpdate();
 			}catch(SQLException e){
@@ -66,7 +73,7 @@ public class BouqetFlowerManager {
 			}
 			}
 			
-			public static int addFlowerBouqet(BouqetFlower bf){
+			public int addFlowerBouqet(BouqetFlower bf){
 				int count = 0;
 				try{
 					addFlowerBouqetStmt.setLong(1, bf.getFlowerIdFlower());
@@ -79,7 +86,7 @@ public class BouqetFlowerManager {
 				return count;
 			}
 		
-			public static List<BouqetFlower> getAllFlowerBouqet(){
+			public List<BouqetFlower> getAllFlowerBouqet(){
 				List<BouqetFlower> bouqetFlower = new ArrayList<BouqetFlower>();
 				
 				try{

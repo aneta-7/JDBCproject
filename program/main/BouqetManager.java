@@ -46,7 +46,7 @@ public class BouqetManager {
 			
 			getAllBouqetStmt = connection.prepareStatement("SELECT idBouqet, bouqetName FROM Bouqet");
 			
-		//	updateBouqetStmt = connection.prepareStatement("UPDATE");
+			updateBouqetStmt = connection.prepareStatement("UPDATE Bouqet SET bouqetName = ? WHERE idBouqet = ?");
 			
 		}
 		catch(SQLException e){
