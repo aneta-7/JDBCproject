@@ -8,16 +8,13 @@ import org.junit.Test;
 
 import main.Bouqet;
 import main.BouqetManager;
-import main.Flower;
-import main.FlowerManager;
+
 
 public class BouqetTest {
-
 
 BouqetManager bouqetManager = new BouqetManager();
 	
 	private final static String NAME_1 = "mieszanka";
-	
 	
 	@Test
 	public void checkConnection(){
@@ -33,9 +30,9 @@ BouqetManager bouqetManager = new BouqetManager();
 		assertEquals(1,bouqetManager.addBouqet(bouqet));
 		
 		List<Bouqet> bouqets = bouqetManager.getAllBouqet();
-		Bouqet personRetrieved = bouqets.get(0);
+		Bouqet bouqetRetrieved = bouqets.get(0);
 		
-		assertEquals(NAME_1, personRetrieved.getBouqetName());
+		assertEquals(NAME_1, bouqetRetrieved.getBouqetName());
 		
 		
 	}

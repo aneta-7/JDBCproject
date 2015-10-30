@@ -10,26 +10,36 @@ import main.BouqetFlower;
 import main.BouqetFlowerManager;
 
 public class FlowerBouqetTest {
-	private final static long NAME_1 = 1;
-	private final static long PRICE_1 = 1;
+	private final static long ID_1 = 1;
+	
+	
+	
+	
+	
+	
+	yeytyetryrtyrtytry
+	private final static long ID_2 = 1;
+
+	
+BouqetFlowerManager bouqetFlowerManager = new BouqetFlowerManager();
 	
 	@Test
 	public void checkConnection(){
-		assertNotNull(BouqetFlowerManager.getConnection());
+		assertNotNull(bouqetFlowerManager.getConnection());
 	}
 	
 	@Test
 	public void checkAdding(){
 		
-		BouqetFlower bf = new BouqetFlower(NAME_1, PRICE_1);
+		BouqetFlower bf = new BouqetFlower(ID_1, ID_2);
 		
-		//BouqetFlowerManager.clearBouqetFlower();
+		BouqetFlowerManager.clearBouqetFlower();
 		assertEquals(1,BouqetFlowerManager.addFlowerBouqet(bf));
 		
 		List<BouqetFlower> bfs = BouqetFlowerManager.getAllFlowerBouqet();
-		BouqetFlower personRetrieved = bfs.get(0);
+		BouqetFlower bfRetrieved = bfs.get(0);
 		
-		assertEquals(NAME_1, personRetrieved.getFlowerIdFlower());
-		assertEquals(PRICE_1, personRetrieved.getBouqetIdBouqet());
+		assertEquals(ID_1, bfRetrieved.getFlowerIdFlower());
+		assertEquals(ID_2, bfRetrieved.getBouqetIdBouqet());
 	}
 }

@@ -3,7 +3,6 @@ package test;
 import static org.junit.Assert.*;
 
 import java.util.List;
-
 import org.junit.Test;
 
 import main.Flower;
@@ -32,10 +31,10 @@ FlowerManager flowerManager = new FlowerManager();
 		assertEquals(1,flowerManager.addFlower(flower));
 		
 		List<Flower> flowers = flowerManager.getAllFlower();
-		Flower personRetrieved = flowers.get(0);
+		Flower flowerRetrieved = flowers.get(0);
 		
-		assertEquals(NAME_1, personRetrieved.getFlowerName());
-		assertEquals(PRICE_1, personRetrieved.getFlowerPrice());
+		assertEquals(NAME_1, flowerRetrieved.getFlowerName());
+		assertEquals(PRICE_1, flowerRetrieved.getFlowerPrice());
 		
 	}
 	

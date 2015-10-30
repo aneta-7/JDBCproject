@@ -3,6 +3,6 @@
 	<classpathentry kind="src" path="program"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="C:/hsql/hsqldb-database-1.6.10.jar/hsqldb-database-1.6.10.jar"/>
+	<classpathentry kind="lib" path="C:/hsql/hsqldb-2.3.3/hsqldb-2.3.3/hsqldb/lib/hsqldb.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
