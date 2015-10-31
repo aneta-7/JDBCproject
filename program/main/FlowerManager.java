@@ -83,13 +83,17 @@ public class FlowerManager {
 			}
 		}
 		
-		public void updateFlower(Flower flower){
+		public int updateFlower(Flower flower){
+			int count = 0;
 			try{
 				updateFlowerStmt.setString(1, flower.getFlowerName());
 				updateFlowerStmt.setLong(2, flower.getIdFlower());
+			
+				count = updateFlowerStmt.executeUpdate();
 			}catch(SQLException e){
 				e.printStackTrace();
 			}
+			return count ;
 		}
 		
 		
