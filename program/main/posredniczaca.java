@@ -107,6 +107,7 @@ public class posredniczaca {
 		try{
 			addBouqetStmt.setString(1, bouqet.getBouqetName());
 			
+			count = addBouqetStmt.executeUpdate();
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
