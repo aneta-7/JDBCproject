@@ -1,4 +1,4 @@
-package main;
+package aneta.aneta;
 
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -25,6 +25,7 @@ public class FlowerManager {
 	private PreparedStatement deleteFlowerStmt;
 	private PreparedStatement getAllFlowerStmt;
 	private PreparedStatement updateFlowerStmt;
+	private PreparedStatement getQueryStmt;
 	
 	private Statement statement;
 
@@ -53,8 +54,9 @@ public class FlowerManager {
 					deleteAllFlowerStmt = connection.prepareStatement("DELETE FROM Flower");
 					deleteFlowerStmt = connection.prepareStatement("DELETE FROM Flower WHERE idFlower =? ");
 					getAllFlowerStmt = connection.prepareStatement("SELECT idFlower, flowerName, flowerPrice FROM Flower");
-				    updateFlowerStmt = connection.prepareStatement("UPDATE Flower SET flowerName = ? WHERE idFlower = ?");
-		
+				    updateFlowerStmt = connection.prepareStatement("UPDATE Flower SET flowerName = ?, flowerPrice =? WHERE idFlower = ?");
+				    getQueryStmt = connection.prepareStatement("SELECT * FROM Bouqet join BouqetFlower on BouqetFlower.bouqetIdBouqet = Bouqet.idBouqet "
+				    		+ "join Flower ON Flower.idFlower = BouqetFlower.flowerIdFlower WHERE Flower.idFlower = ?");
 		}
 		catch(SQLException e){
 			e.printStackTrace();
@@ -65,6 +67,19 @@ public class FlowerManager {
 		 public Connection getConnection(){
 			return connection;
 		}
+		 
+		public int deleteFlower (Flower flower){
+			int count = 0;
+			try{
+				deleteFlowerStmt.setLong(1, flower.getIdFlower());
+				
+				count = deleteFlowerStmt.executeUpdate();				
+			}catch(SQLException e){
+				e.printStackTrace();
+			}
+			return count;
+		}
+		
 		public void clearFlower(){
 			try{
 				deleteAllFlowerStmt.executeUpdate();
@@ -72,22 +87,13 @@ public class FlowerManager {
 			e.printStackTrace();
 		}
 		}
-		
-		public void deleteFlower(Flower flower){
-			
-			try{
-				deleteFlowerStmt.setInt(1,(int) flower.getIdFlower());				
-			}
-			catch(Exception e){
-				e.printStackTrace();
-			}
-		}
-		
+				
 		public int updateFlower(Flower flower){
 			int count = 0;
 			try{
 				updateFlowerStmt.setString(1, flower.getFlowerName());
-				updateFlowerStmt.setLong(2, flower.getIdFlower());
+				updateFlowerStmt.setString(2, flower.getFlowerPrice());
+				updateFlowerStmt.setLong(3, flower.getIdFlower());
 			
 				count = updateFlowerStmt.executeUpdate();
 			}catch(SQLException e){
@@ -109,7 +115,8 @@ public class FlowerManager {
 			}
 			return count;
 		}
-	
+		//przypisanie x do y 		
+		
 		public List<Flower> getAllFlower(){
 			List<Flower> flower = new ArrayList<Flower>();
 			
@@ -121,6 +128,18 @@ public class FlowerManager {
 					f.setIdFlower(rs.getInt("idFlower"));
 					f.setFlowerName(rs.getString("flowerName"));
 					f.setFlowerPrice(rs.getString("flowerPrice"));
+					
+					getQueryStmt.setLong(1, f.getIdFlower() );
+					ResultSet rs2 = getQueryStmt.executeQuery();
+					
+					while(rs2.next())
+					{
+						Bouqet b = new Bouqet();
+						b.setBouqetName(rs2.getString("bouqetName"));
+						
+						
+						f.bouqets.add(b);
+					}
 					flower.add(f);
 					
 				}
