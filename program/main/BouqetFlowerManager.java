@@ -1,4 +1,4 @@
-package main;
+package aneta.aneta;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import org.hsqldb.jdbcDriver;
 
 public class BouqetFlowerManager {
 
@@ -24,6 +25,7 @@ public class BouqetFlowerManager {
 		private PreparedStatement deleteAllFlowerBouqetStmt;
 		private PreparedStatement getAllFlowerBouqetStmt;
 		private PreparedStatement updateFlowerBouqetStmt;
+		private PreparedStatement deleteFlowerBouqetStmt;
 		
 		private Statement statement;
 		public BouqetFlowerManager(){
@@ -51,8 +53,9 @@ public class BouqetFlowerManager {
 						
 						addFlowerBouqetStmt =  connection.prepareStatement("INSERT INTO BouqetFlower(flowerIdFlower, bouqetIdBouqet)VALUES(?,?)");
 						deleteAllFlowerBouqetStmt = connection.prepareStatement("DELETE FROM BouqetFlower");
+						deleteFlowerBouqetStmt = connection.prepareStatement("DELETE FROM BouqetFlower WHERE FlowerIdFlower = ?");
 						getAllFlowerBouqetStmt = connection.prepareStatement("SELECT flowerIdFlower, bouqetIdBouqet FROM BouqetFlower");
-					//	updateFlowerBouqetStmt = connection.prepareStatement("UPDATE BouqetFlower SET  ");
+						updateFlowerBouqetStmt = connection.prepareStatement("UPDATE BouqetFlower SET flowerIdFlower =? WHERE bouqetIdBouqet = ? ");
 			
 			}
 			catch(SQLException e){
@@ -73,11 +76,43 @@ public class BouqetFlowerManager {
 			}
 			}
 			
-			public int addFlowerBouqet(BouqetFlower bf){
+			public int updateBouqetFlower(BouqetFlower bf){
 				int count = 0;
 				try{
-					addFlowerBouqetStmt.setLong(1, bf.getFlowerIdFlower());
-					addFlowerBouqetStmt.setLong(2, bf.getBouqetIdBouqet());
+					updateFlowerBouqetStmt.setLong(1, bf.getFlowerIdFlower());
+					updateFlowerBouqetStmt.setLong(2, bf.getBouqetIdBouqet());
+					
+					count = updateFlowerBouqetStmt.executeUpdate();
+				}
+				catch(SQLException e){
+					e.printStackTrace();
+				}
+				
+				return count;
+				
+			}
+			
+			public int deleteBouqetFlower(BouqetFlower bf)
+			{
+				int count = 0;
+				try{
+					deleteFlowerBouqetStmt.setLong(1, bf.getFlowerIdFlower());
+					
+					count = deleteFlowerBouqetStmt.executeUpdate();
+				}
+				catch(SQLException e)
+				{
+					e.printStackTrace();
+				}
+				
+				return count;
+			}
+			
+			public int addFlowerBouqet(Flower f, Bouqet b){
+				int count = 0;
+				try{
+					addFlowerBouqetStmt.setLong(1, f.getIdFlower());
+					addFlowerBouqetStmt.setLong(2, b.getIdBouqet());
 					
 					count = addFlowerBouqetStmt.executeUpdate();
 				}catch(SQLException e){
