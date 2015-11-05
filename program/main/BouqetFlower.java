@@ -1,4 +1,4 @@
-package main;
+package aneta.aneta;
 
 public class BouqetFlower {
 	private long flowerIdFlower;
@@ -9,7 +9,7 @@ public class BouqetFlower {
 	}
 	
 	public BouqetFlower(long flowerIdFlower, long bouqetIdBouqet) {
-		super();
+
 		this.flowerIdFlower = flowerIdFlower;
 		this.bouqetIdBouqet = bouqetIdBouqet;
 	}
@@ -27,3 +27,4 @@ public class BouqetFlower {
 	}
 	
 }
+
