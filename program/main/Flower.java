@@ -1,12 +1,17 @@
-package main;
+package aneta.aneta;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Flower {
 	private long idFlower;
 	private String flowerName;
 	private String flowerPrice;
 	
-	private long flowerIdFlower;
-	private long bouqetIdBouqet;
+	public List<Bouqet> bouqets = new ArrayList<Bouqet>();
+	
+	
+	
 	public Flower(){
 		
 	}
@@ -15,15 +20,11 @@ public class Flower {
 		super();
 		this.flowerName = flowerName;
 		this.flowerPrice = flowerPrice;
-		
 	}
-	public Flower(String flowerName,long idFlower) {
-		this.flowerName = flowerName;
-		this.idFlower = idFlower;
-	}
-
+	
 	public long getIdFlower() {
 		return idFlower;
+		
 	}
 	public void setIdFlower(long idFlower) {
 		this.idFlower = idFlower;
@@ -40,16 +41,5 @@ public class Flower {
 	public void setFlowerPrice(String flowerPrice) {
 		this.flowerPrice = flowerPrice;
 	}
-	public long getFlowerIdFlower() {
-		return flowerIdFlower;
-	}
-	public void setFlowerIdFlower(long flowerIdFlower) {
-		this.flowerIdFlower = flowerIdFlower;
-	}
-	public long getBouqetIdBouqet() {
-		return bouqetIdBouqet;
-	}
-	public void setBouqetIdBouqet(long bouqetIdBouqet) {
-		this.bouqetIdBouqet = bouqetIdBouqet;
-	}
+	
 }
