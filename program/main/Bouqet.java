@@ -1,4 +1,4 @@
-package main;
+package aneta.aneta;
 
 public class Bouqet {
 	private long idBouqet;
@@ -23,3 +23,4 @@ public class Bouqet {
 		this.bouqetName = bouqetName;
 	}
 }
+
