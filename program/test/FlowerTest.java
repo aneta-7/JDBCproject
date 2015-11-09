@@ -63,18 +63,25 @@ FlowerManager flowerManager = new FlowerManager();
 	
 	@Test
 	public void checkDelete(){
+	
 		Flower flower = new Flower(NAME_1, PRICE_1);
 		
 		flowerManager.clearFlower();
 		assertEquals(1,flowerManager.addFlower(flower));
+		List<Flower> bouqets = flowerManager.getAllFlower();
+	    
+		int k=flowerManager.getAllFlower().size();
+
 		
-		List<Flower> flowers = flowerManager.getAllFlower();
-		Flower flowerRetrieved = flowers.get(0);
-		
-		assertEquals(1, flowerManager.deleteFlower(flowerRetrieved));
+		assertEquals(k-1, flowerManager.deleteFlower(flower));
+		assertEquals(0,flowerManager.deleteFlower(flower));
 		
 	}
 		
+	
+	
+	
+	
 	
 	
 }
