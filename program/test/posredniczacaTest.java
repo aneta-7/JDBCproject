@@ -85,4 +85,3 @@ private final static String PRICE_1 = "4";
 	
 	
 }
-
