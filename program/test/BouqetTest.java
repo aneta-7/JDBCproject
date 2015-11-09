@@ -66,11 +66,15 @@ BouqetManager bouqetManager = new BouqetManager();
 		
 		bouqetManager.clearBouqet();
 		assertEquals(1,bouqetManager.addBouqet(bouqet));
-		
 		List<Bouqet> bouqets = bouqetManager.getAllBouqet();
-		Bouqet bouqetRetrieved = bouqets.get(0);
+	    
+		int k=bouqetManager.getAllBouqet().size();
+
 		
-		assertEquals(1, bouqetManager.deleteBouqet(bouqetRetrieved));
+		assertEquals(k-1, bouqetManager.deleteBouqet(bouqet));
+		
+		
+		
 	}
 
 }
