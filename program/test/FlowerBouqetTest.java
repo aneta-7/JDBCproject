@@ -25,9 +25,7 @@ public class FlowerBouqetTest {
 		public void checkConnection(){
 			assertNotNull(bouqetFlowerManager.getConnection());
 		}
-		
-		
-		
+			
 		@Test
 		public void checkAdd(){
 			Flower flower = new Flower(NAME_2, PRICE_1);
@@ -46,7 +44,15 @@ public class FlowerBouqetTest {
 			List<Bouqet> bouqets = bouqetManager.getAllBouqet();
 			Bouqet bouqetRetrieved = bouqets.get(0);
 
+			
+		
+			int k=bouqetFlowerManager.getAllFlowerBouqet().size();
+			assertEquals(k,bouqetFlowerManager.getAllFlowerBouqet().size());
+			
 			assertEquals(1, bouqetFlowerManager.addFlowerBouqet(flowerRetrieved,bouqetRetrieved));
+			assertEquals(k+1,bouqetFlowerManager.getAllFlowerBouqet().size());
+			
+			
 			
 		}
 		@Test
@@ -75,12 +81,37 @@ public class FlowerBouqetTest {
 	
 		@Test 
 		public void checkDelete(){
-			BouqetFlower bf = new BouqetFlower(ID_1,ID_2);
-					
-			List<BouqetFlower> bfs = bouqetFlowerManager.getAllFlowerBouqet();
-			BouqetFlower bfRetrieved = bfs.get(0);
+			BouqetFlower bf = new BouqetFlower(ID_1,ID_2);	
 			
-			assertEquals(1, bouqetFlowerManager.deleteBouqetFlower(bfRetrieved));
+			Flower flower = new Flower(NAME_2, PRICE_1);
+			
+			flowerManager.clearFlower();
+			assertEquals(1, flowerManager.addFlower(flower));
+			
+			List<Flower> flowers = flowerManager.getAllFlower();
+			Flower flowerRetrieved = flowers.get(0);
+			
+			Bouqet bouqet = new Bouqet(NAME_1);
+			
+			bouqetManager.clearBouqet();
+			assertEquals(1,bouqetManager.addBouqet(bouqet));
+			
+			List<Bouqet> bouqets = bouqetManager.getAllBouqet();
+			Bouqet bouqetRetrieved = bouqets.get(0);
+			
+
+			bouqetFlowerManager.clearBouqetFlower();
+			assertEquals(1,bouqetFlowerManager.addFlowerBouqet(flower,bouqet));
+			List<BouqetFlower> bfs = bouqetFlowerManager.getAllFlowerBouqet();
+		    
+			int k=bouqetFlowerManager.getAllFlowerBouqet().size();
+
+			
+			assertEquals(k-1, bouqetFlowerManager.deleteBouqetFlower(bf));
+			assertEquals(0,bouqetFlowerManager.deleteBouqetFlower(bf));
+		
+		
+		
 		}
 		
 
